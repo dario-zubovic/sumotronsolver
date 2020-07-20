@@ -146,7 +146,7 @@ func exploreFrom(startingGrid grid, wg *sync.WaitGroup, resultCh chan grid) {
 
 			for _, pos := range secondHighestSumPositions {
 				if secondHighestSum > highestSum*87/100 ||
-					highestSum < 15 ||
+					(highestSum < 10 && secondHighestSum > 1) ||
 					((pos.x == 0 || pos.x == width-1) && (pos.y == 0 || pos.y == height-1) && secondHighestSum >= maxVal) { // behave non-greedy at grid edges
 					newGrid := gridDeepCopy(grid)
 					newGrid[pos] = secondHighestSum
